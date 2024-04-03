@@ -1,9 +1,12 @@
-import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res, UseInterceptors } from '@nestjs/common';
 import { JoinRequestDto } from './dto/join.request.dto';
 import { UsersService } from './users.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UserDto } from './dto/user.response.dto';
+import { User } from 'src/common/decorators/user.decorator';
+import { UndefinedToNullInterceptor } from 'src/common/interceptors/undefinedToNull.interceptor';
 
+@UseInterceptors(UndefinedToNullInterceptor)
 @ApiTags('User')
 @Controller('api/users')
 export class UsersController {
@@ -23,8 +26,10 @@ export class UsersController {
     })
     @ApiOperation({summary: '내 정보 조회'})
     @Get()
-    getUsers(@Req() req){
-        return req.user; //회원정보를 반환하기 때문에 UserDto를 사용한다.
+    // getUsers(@Req() req){
+    getUsers(@User() user) { //커스텀 데코레이션 사용
+        // return req.user; //회원정보를 반환하기 때문에 UserDto를 사용한다.
+        return user;  //커스텀 데코레이션을 생성 및 사용하여 req.user가 아닌 user를 사용하였다.
     }
     
     @ApiOperation({summary: '회원가입'}) // swagger에서 출력할 API 정보
@@ -40,8 +45,10 @@ export class UsersController {
     })
     @ApiOperation({summary: '로그인'})
     @Post('login')
-    login(@Req() req) {
-        return req.user; //회원정보를 반환하기 때문에 UserDto를 사용한다.
+    // login(@Req() req) {
+    login(@User() user) { //커스텀 데코레이션 사용
+        // return req.user; //회원정보를 반환하기 때문에 UserDto를 사용한다.
+        return user; //커스텀 데코레이션을 생성 및 사용하여 req.user가 아닌 user를 사용하였다.
     }
 
     @ApiOperation({summary: '로그아웃'})

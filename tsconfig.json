@@ -18,6 +18,5 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "esModuleInterop": true // 이 항목만 추가됨
-  },
-  "exclude": ["node_modules"]
+  }
 }
