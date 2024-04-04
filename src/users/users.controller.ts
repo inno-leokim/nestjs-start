@@ -34,9 +34,8 @@ export class UsersController {
     
     @ApiOperation({summary: '회원가입'}) // swagger에서 출력할 API 정보
     @Post()
-    join(@Body() data: JoinRequestDto){
-        this.usersService.postUsers(data.email, data.nickname, data.password);
-        return undefined;
+    async join(@Body() data: JoinRequestDto){
+        await this.usersService.postUsers(data.email, data.nickname, data.password); //eceptionfilter 사용을 위해 await을 반드시 붙여야한다.
     }
     
     @ApiResponse({
