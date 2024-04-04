@@ -36,6 +36,7 @@ export class UsersController {
     @Post()
     join(@Body() data: JoinRequestDto){
         this.usersService.postUsers(data.email, data.nickname, data.password);
+        return undefined;
     }
     
     @ApiResponse({

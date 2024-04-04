@@ -62,7 +62,8 @@ const getEnv = () => {
       charset: 'utf8mb4_general_ci', // 이모티콘을 사용하기 위해 설정
       logging: true,
       // autoLoadEntities: true, //자동으로 entity를 불러오는 기능. 버그가 있을 수 있다.
-    })
+    }),
+    TypeOrmModule.forFeature([Users])
   ],   
   controllers: [AppController],
   providers: [AppService, ConfigService, UsersService],    
