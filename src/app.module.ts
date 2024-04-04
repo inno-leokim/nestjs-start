@@ -27,6 +27,8 @@ const getEnv = () => {
   }
 }
 
+// typeorm-extension은 app.module.ts 설정을 못 읽어온다. 따라서 dataSource.ts 파일을 생성했다.
+
 // imports에 ConfigModule 추가. 이제 root 폴더에서 .env를 사용할 수 있다. getEnv에서 리턴하는 값들을 사용할 수 있다.
 // 물론 .dotenv 파일에 있는 환경변수도 사용할 수 있다.
 @Module({
