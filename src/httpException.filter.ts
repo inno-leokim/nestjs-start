@@ -14,7 +14,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
             | { error: string; statusCode: 400; message: string[] };
 
         if (typeof err !== 'string' && err.statusCode === 400) {
-
+            // class-validator 에러
             return response.status(status).json({
                 success: false,
                 code: status,
