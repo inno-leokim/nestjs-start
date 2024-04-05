@@ -78,7 +78,6 @@ const getEnv = () => {
   //   useValue: 'CUSTOM_VALUE'
   // }
 })
-
 // LoggerMiddleware 연결을 위해 작성. 추가되는 미들웨어들은 AppModule 클래스에서 consumer에 추가한다. 알아볼 것
 export class AppModule implements NestModule{
   configure(consumer: MiddlewareConsumer) {

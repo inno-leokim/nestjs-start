@@ -1,14 +1,15 @@
 import { DataSource } from 'typeorm';
 import dotenv from 'dotenv';
-import { ChannelChats } from './src/entity/ChannelChats';
-import { ChannelMembers } from './src/entity/ChannelMembers';
-import { Channels } from './src/entity/Channels';
-import { DMs } from './src/entity/DMs';
-import { Mentions } from './src/entity/Mentions';
-import { Users } from './src/entity/Users';
-import { WorkspaceMembers } from './src/entity/WorkspaceMembers';
-import { Workspaces } from './src/entity/Workspaces';
+import { ChannelChats } from './src/entity/ChannelChats';      // 상대경로로 해준다.
+import { ChannelMembers } from './src/entity/ChannelMembers';  // 상대경로로 해준다.
+import { Channels } from './src/entity/Channels';  // 상대경로로 해준다.
+import { DMs } from './src/entity/DMs';  // 상대경로로 해준다.
+import { Mentions } from './src/entity/Mentions';  // 상대경로로 해준다.
+import { Users } from './src/entity/Users';  // 상대경로로 해준다.
+import { WorkspaceMembers } from './src/entity/WorkspaceMembers';  // 상대경로로 해준다.
+import { Workspaces } from './src/entity/Workspaces';  // 상대경로로 해준다.
 
+// ConfigModule을 사용할 수 없기때문에 dotenv를 사용한다. ConfigModule은 내부적으로 dotenv를 사용한다.
 dotenv.config();
 
 // typeorm-extension은 app.module.ts 설정을 못 읽어온다. 따라서 dataSource.ts 파일을 생성했다.
