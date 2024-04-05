@@ -56,7 +56,7 @@ const getEnv = () => {
         Users,
         WorkspaceMembers,
         Workspaces,
-      ], // 하나씩 입력하는 방법도 있다.
+      ], // 하나씩 입력하는 방법도 있다. 이게 버그 위험으로부터 더 안전하다.
       keepConnectionAlive: true, //hot reload를 위해서 설정
       migrations: [__dirname + '/migrations/*.ts'],
       charset: 'utf8mb4_general_ci', // 이모티콘을 사용하기 위해 설정
@@ -85,3 +85,4 @@ export class AppModule implements NestModule{
     consumer.apply(LoggerMiddleware).forRoutes('*');
   }
 }
+      
