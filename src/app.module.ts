@@ -63,7 +63,7 @@ const getEnv = () => {
       logging: true,
       // autoLoadEntities: true, //자동으로 entity를 불러오는 기능. 버그가 있을 수 있다.
     }),
-    TypeOrmModule.forFeature([Users])
+    TypeOrmModule.forFeature([Users]) //repository가 userservice에 인젝션된다. users.module에도 추가해야 한다.
   ],   
   controllers: [AppController],
   providers: [AppService, ConfigService, UsersService],    
