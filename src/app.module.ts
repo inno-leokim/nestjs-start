@@ -17,6 +17,7 @@ import { Mentions } from './entity/Mentions';
 import { Users } from './entity/Users';
 import { WorkspaceMembers } from './entity/WorkspaceMembers';
 import { Workspaces } from './entity/Workspaces';
+import { AuthModule } from './auth/auth.module';
 
 const getEnv = () => {
   // 여기서 하드코딩 값이 아니라 VAULT 등 솔루션으로부터 값을 받아올 수 있다. async/await을 사용할 수 있다.
@@ -34,6 +35,7 @@ const getEnv = () => {
 @Module({
   imports: [
     ConfigModule.forRoot({isGlobal: true, load: [getEnv]}), 
+    AuthModule,
     UsersModule, 
     WorkspacesModule, 
     ChannelsModule, 

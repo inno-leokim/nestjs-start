@@ -2,6 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { HttpExceptionFilter } from './httpException.filter';
+import { ValidationPipe } from '@nestjs/common';
+import passport from 'passport';
 
 declare const module: any;
 
@@ -9,7 +11,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const port = process.env.PORT || 3000; //포트를 환경변수에서 설정할 수 있도록 수정.
   app.useGlobalFilters(new HttpExceptionFilter());
-  
+  app.useGlobalPipes(new ValidationPipe()); //class-validator를 사용하기 위해 추가한다.
+  app.use(passport.initialize());
+  app.use(passport.session());
   /**
    * 스웨거(swagger) 관련 설정
   */
